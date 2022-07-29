@@ -1,6 +1,5 @@
 
 import { LendingPool, InterestRate } from '@aave/contract-helpers';
-import { use } from 'chai';
 import deployed_contracts_address from "../deployed-contracts.json"
 import { submitTransaction } from "./SubmitTransaction";
 
