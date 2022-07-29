@@ -1,0 +1,483 @@
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.Dapp {
+    font-family: 'Inter', sans-serif;
+}
+
+.borrowedAssetTable a {
+    color: black !important;
+}
+
+.suppliedAssetTable a {
+    color: black !important;
+}
+
+.borrowAssetTable a {
+    color: black !important;
+}
+
+.supplyAssetTable a {
+    color: black !important;
+}
+
+.textaligncenter {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 4rem 6rem 8rem 6rem;
+    background: #070a0e;
+    color: white;
+}
+
+
+.staking-card {
+    margin-top: -100px;
+}
+
+.markets-details {
+    padding-top: 2rem;
+    text-align: center;
+}
+.markets-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+}
+
+
+.svg path {
+    fill: url(#MyGradient);
+}
+
+.anticon-check-circle path {
+    fill: #4caf50;
+}
+
+
+.stakingdiv {
+    padding-bottom: 4rem;
+}
+
+.creditdiv {
+    padding-bottom: 4rem;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+    color: black;
+    background-color: #001529;
+}
+
+.ant-layout-header {
+    background: #070a0e !important;
+
+    /* border-bottom: 1px solid #494B53 !important; */
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar a:hover {
+    color: #da00d9;
+}
+
+.col-left {
+    margin-right: auto;
+}
+
+.col-right {
+    margin-left: auto;
+}
+
+
+.padding {
+    padding: 0px 3px 10px 3px;
+}
+
+.markets-overview {
+    background-color: #070a0e;
+    color: white;
+    padding-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1600px;
+}
+.market-overview-container{
+    background-color: #070a0e;
+}
+
+.markets-asset-table-container {
+    margin-top: -50px;
+    color: white;
+}
+
+.ant-progress-text {
+    color: white !important;
+}
+
+.credit-overview {
+    padding: 50px 70px 150px 70px;
+    background-color: #070a0e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.credit-overview img{
+ width: 150px;
+}
+#eth{
+    margin-left: -100px;
+}
+#bitcoin{
+    margin-right: -100px;
+}
+
+.credit-table-row {
+    margin-top: -100px;
+}
+
+
+
+
+
+.net-apy-wrapper {
+    height: 160px;
+    width: 160px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.net-apy-wrapper .net-apy-description {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0.1875rem;
+    background-color: #070a0e;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    
+}
+
+.rotator-div{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #070a0e;
+    border-radius: 40%;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    animation: rotate 10s ease-in-out alternate-reverse infinite;
+}
+
+@keyframes rotate {
+    0%{
+        rotate: 0deg;
+        margin: 0.1875rem;
+    }
+    100%{
+        rotate: 7200deg;
+        margin: 0.9875rem;
+    }
+    
+}
+
+.headline {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 0.2rem;
+}
+
+
+
+
+.modalbody {
+    font-family: 'Inter', sans-serif;
+
+}
+
+.ant-modal {
+    overflow: hidden;
+}
+
+.ant-modal-body {
+    padding: 15px 20px 10px 20px !important;
+}
+
+.input-div {
+    padding: 3px;
+    margin-bottom: 6px;
+}
+
+.input-div p {
+    margin-bottom: 4px;
+}
+
+.transaction-overview p {
+    margin-bottom: 4px;
+}
+
+.modalbody .input {
+    width: 250px;
+    height: 40px;
+    font-size: 1.5rem;
+}
+
+.modal-input-flex-div {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    border: #ddd 1px solid;
+    padding: 3px 10px 4px 2px;
+    border-radius: 0.56rem;
+    width: 100%;
+}
+
+
+.align-left {
+    margin-left: 0px;
+}
+
+.input-asset-name h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.modal-below-input-div {
+    margin-bottom: 4px;
+    padding: 0 3px 0 3px !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+}
+
+.modal-p-below-input {
+    margin-left: 12px;
+    font-size: 0.9rem;
+}
+
+.below-input-div {
+    padding-top: 5px;
+}
+
+/* .transaction-overview{
+
+} */
+
+.modal-transaction-overview-card {
+    margin: 6px 3px 10px 3px;
+}
+
+.gas-div {
+    padding: 10px;
+}
+
+#transaction-card {
+    padding: 0px;
+}
+
+.borrow-apy-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ant-switch-checked {
+    background-color: #4caf50 !important;
+}
+
+.ant-table-thead {
+    font-size: 0.75rem;
+}
+
+.ant-table-title h2 {
+    font-weight: 600;
+}
+
+.modal-btn {
+    background: #1c1f28 !important;
+    border: none !important;
+    height: 40px !important;
+    width: 100% !important;
+}
+
+.ant-result,
+.ant-button {
+    font-family: 'Inter', sans-serif;
+}
+
+
+.ant-btn-primary{
+    background-color: #1c1f28 !important;
+    border: none !important;
+}
+
+
+.ant-btn-primary[disabled],
+.ant-btn-primary[disabled]:hover,
+.ant-btn-primary[disabled]:focus,
+.ant-btn-primary[disabled]:active {
+    background-color: #9094a7 !important;
+    color: white !important;
+    border: none !important;
+}
+
+
+.align-asset-name-image {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: left !important;
+    flex-direction: row !important;
+}
+
+.credit-balance-markets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    text-align: center;
+    gap: 8rem;
+}
+
+.ant-progress-text {
+    font-weight: 600 !important;
+    color: #9094a7 !important;
+}
+
+.align-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dashboard{
+    background: #f0f2f5;
+    color: white;
+    
+}
+.account-overview-container{
+    background: #070a0e;
+    padding: 4rem 8rem 6rem 8rem;
+
+}
+.account-overview{
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem;
+}
+.account-details-container{
+    padding: 4rem 8rem;
+    
+}
+
+.account-details{
+    padding: 4rem 6rem ;
+    background: white;
+    margin-top: -130px;
+    border-radius: 0.25rem;
+}
+
+.width100{
+    width: 100%;
+}
+
+#arrow{
+    width: 200px;
+    margin-left: 230px;
+    margin-right: auto;
+}
+.userimg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.userimg img{
+    width: 150px;
+}
+.flex-even{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flex-even{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.flex-end{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-last{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.padding1{
+    padding: 3rem;
+}
+.ant-radio-button, .ant-radio-button-checked{
+    background: linear-gradient(150deg,#da00d9,#2151fe) !important;
+    border: none !important;
+}
+
+.ant-radio-button-wrapper, .ant-radio-button-wrapper-checked{
+    border: none !important;
+}
+.identicon{
+    margin-bottom: -10px;
+    border-radius: 50%;
+}
+.shadows{
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.testnet-warning{
+    height: 40px;
+    background: #070a0e;
+    color: white;
+    font-size: 1rem;
+}
