@@ -17,7 +17,6 @@ import { getMaxAmountAvailableToBorrow } from '../../../helpers/getMaxAmountAvai
 import { DigitsFormat } from '../../../helpers/DigitsFormat';
 
 import { ethers } from 'ethers';
-import { use } from 'chai';
 import AddTokenToWallet from '../../AddTokenToWallet';
 import { valueToBigNumber, calculateHealthFactorFromBalancesBigUnits } from '@aave/math-utils';
 import CurrencyFormater from "../../../helpers/CurrencyFormater"
