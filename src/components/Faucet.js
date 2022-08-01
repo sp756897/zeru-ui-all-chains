@@ -1,85 +1,62 @@
 import React from 'react'
 import { Button, Space, Table } from 'antd';
 import { Link } from 'react-router-dom';
-import SupplyModal from './Modals/SupplyModal';
 import { useSelector } from 'react-redux';
 import { ethers } from "ethers"
-import { DigitsFormat } from '../../helpers/DigitsFormat';
-import {BsBoxArrowUpRight} from 'react-icons/bs'
+import { DigitsFormat } from '../helpers/DigitsFormat';
+import { useLocation } from 'react-router-dom';
+import FaucetModal from './AssetTables/Modals/FaucetModal';
 
-
-export default function SupplyAssetTable(props) {
-
+export default function Faucet() {
+    const titles  = useLocation((state) => state.titles)
+    const provider = useLocation((state) => state.provider)
+    
     const userWalletBalancesDictionary = useSelector((state) => state.reserve.userWalletBalancesDictionary);
     const userSummary = useSelector((state) => state.reserve.userSummary);
     const userAccountDatawithCreditData = useSelector((state) => state.reserve.userAccountDatawithCreditData)
-    const titles = props.titles;
-    console.log('titles:',titles)
-    const provider = props.provider;
-    console.log('provider:',provider)
-
     const columns = [
         {
-            title: props.titles.c1,
+            title: titles.c1,
             dataIndex: 'asset',
             key: 'asset',
-            width: '20%',
             render: (text, record) => {
                 const asset = text.toLowerCase();
                 return (
                     <div className='align-asset-name-image'>
-                        <img height={25} width={25} src={require(`../../images/icons/tokens/${asset}.svg`)} style={{ marginRight: '10px' }} />
+                        <img height={25} width={25} src={require(`../images/icons/tokens/${asset}.svg`)} style={{ marginRight: '10px' }} />
                         <Link to="/details" state={{ asset: text, record: record }}>{text}</Link>
                     </div>
 
                 );
             }
             ,
-            align: 'left'
+            align: 'center'
         },
         {
-            title: props.titles.c2,
+            title: titles.c2,
             dataIndex: 'balance',
             key: 'balance',
             align: 'right'
-        },
-        {
-            title: props.titles.c3,
-            dataIndex: 'apy',
-            key: 'apy',
-            align: 'center',
-            width: '15%'
-        },
-        {
-            title: props.titles.c4,
-            key: 'collateral',
-            dataIndex: 'collateral',
-            align: 'center'
         },
         {
             title: '',
             key: 'action',
             render: (text, record) => (
                 <Space size="middle" >
-                    <SupplyModal btn="primary" record={record} provider={props.provider} />
-                    <Button><Link to="/details" state={{ asset: 'ETH', record: record }}>details</Link></Button>
+                    <FaucetModal btn="primary" record={record} provider={provider} />
                 </Space>
             ),
-            align: 'center'
+            align: 'right'
         },
     ];
 
     const defaultTitle = () => {
         return (
             <div>
-                <h2>Supply Assets</h2>
-                <div style={{display:'flex',alignItems:'center',justifyContent:'flex-end'}}>
-                    <Link to="/faucet" state={{ titles: titles, provider: provider }} >Faucet <BsBoxArrowUpRight size={12} /></Link>
-                </div>
+                <h2>Faucet</h2>
             </div>
         )
     }
-
     const supplyAssetTableList = []
     const data = userSummary ? userSummary.userReservesData.map((data, key) => {
 
@@ -136,9 +113,14 @@ export default function SupplyAssetTable(props) {
         }
     }) : ""
 
+
     return (
-        <div className='supplyAssetTable'>
+        <div >
+            <div className='conc'>
+            </div>
+            <div className='FaucetAssetTable'>
             <Table title={defaultTitle} columns={columns} dataSource={supplyAssetTableList} pagination={false} />
+            </div>
         </div>
     )
 }

@@ -41,6 +41,7 @@ import { loadReserveSummary, loadUserSummary, loadWalletSummary } from "./store/
 import Markets from "./components/Markets";
 import Dashboard from "./components/Dashboard";
 import TestnetWarning from "./components/TestnetWarning";
+import Faucet from "./components/Faucet";
 
 const { Option } = Select;
 
@@ -360,6 +361,7 @@ export default function Dapp() {
                         <Route path="/details" element={<AssetDetails />} />
                         <Route path="/staking" element={<Staking />} />
                         <Route path="/credit" element={<Credit provider={injectedProvider} />} />
+                        <Route path="/faucet" element={<Faucet/>} />
                         <Route path={`/dashboard`} element={<Dashboard network={currentNetwork} />} />
                     </Routes>
                     <Footer style={{ background: '#070a0e', color: 'white', marginTop: 'auto' }}>
