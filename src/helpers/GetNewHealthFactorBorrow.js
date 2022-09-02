@@ -22,7 +22,7 @@ export const GetNewHealthFactorBorrow = (
         currentLiquidationThreshold: valueToBigNumber(currentLiquidationThreshold),
     });
 
-    console.log(newHealthFactor.toString(10), amountIntEth.toString(), totalCreditInEthBig.toString(), totalCollateralMarketReferenceCurrencyTemp.toString())
+    // console.log(newHealthFactor.toString(10), amountIntEth.toString(), totalCreditInEthBig.toString(), totalCollateralMarketReferenceCurrencyTemp.toString())
     return (newHealthFactor.toString())
 
 }

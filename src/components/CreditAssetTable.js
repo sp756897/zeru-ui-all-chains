@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { CreditBalance } from './CreditBalance';
 import CurrencyFormater from "../helpers/CurrencyFormater"
+import { DigitsFormat } from '../helpers/DigitsFormat';
 
 export default function CreditAssetTable(props) {
-  const reserveData = useSelector((state) => state.reserve.reserveData)
+  const userSummary = useSelector((state) => state.reserve.userSummary)
   const user = useSelector((state) => state.account.address)
   const creditBalance = useSelector((state) => state.reserve.userCreditBalance)
 
@@ -41,21 +42,27 @@ export default function CreditAssetTable(props) {
     },
   ];
   const creditTable = []
-  const data = reserveData ? reserveData.map(async (data, key) => {
 
-    let reserve = data.underlyingAsset
+  const data = userSummary ? userSummary.userReservesData.map(async (data, key) => {
+
+    let reserve = data.reserve.underlyingAsset
     let creditBalanceValue = creditBalance ? creditBalance[reserve] : 0.00
 
-    if (data.isActive && creditBalanceValue > 0) {
-      let asset = data.name
-      let creditTokensAddress = data.creditTokensAddress
+    // console.log("Balance Credit: ", creditBalance)
+
+    if (data.reserve.isActive && creditBalanceValue > 0) {
+      let asset = data.reserve.name
+      let creditTokensAddress = data.reserve.creditTokensAddress
+      let creditBalanceValueInUSD = creditBalanceValue * data.reserve.priceInUSD
+      creditBalanceValueInUSD = "$" + DigitsFormat(creditBalanceValueInUSD)
+
       creditTable.push(
         {
           key: key,
           asset: asset,
           credit: creditBalanceValue,
           reserve: reserve,
-          balanceInUSD: CurrencyFormater(parseFloat(creditBalanceValue * data.priceInUSD), 2)
+          balanceInUSD: creditBalanceValueInUSD
         }
       )
     }

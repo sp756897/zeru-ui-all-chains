@@ -12,16 +12,8 @@ import dayjs from 'dayjs';
 import { normalizedToUsd } from '../../helpers/NormalizeToUSD';
 import { CreditBalance } from '../../components/CreditBalance';
 import { DigitsFormat } from "../../helpers/DigitsFormat"
+import { ChainIdsToNetwork } from '../../helpers/ChainIds';
 
-const lendingPoolAddressProvider = deployed_contracts_address.LendingPoolAddressesProvider.mumbai.address
-const lendingPool_address = deployed_contracts_address.LendingPool.mumbai.address
-const uipoolDataProvider_address = deployed_contracts_address.UiPoolDataProvider.mumbai.address
-const walletBalanceProviderAddress = deployed_contracts_address.WalletBalanceProvider.mumbai.address
-
-let reserve_data = null
-let UiPoolDataProvider_contract = null
-let chainId = null
-let lendingPool_contract = null
 
 const ammSymbolMap = {
     '0xae461ca67b15dc8dc81ce7615e0320da1a9ab8d5': 'UNIDAIUSDC',
@@ -134,38 +126,26 @@ const getReservesHumanized = (reservesRaw, poolBaseCurrencyRaw, chainId, lending
 }
 
 export const loadReserveSummary = createAsyncThunk("account/loadReserveSummary", async (pro) => {
-    let chainIdTemp = await pro.getNetwork()
-    chainId = chainIdTemp.chainId
-    UiPoolDataProvider_contract = new ethers.Contract(
-        uipoolDataProvider_address,
-        UiPoolDataProvider_abi.abi,
-        pro
-    )
-
-    const getReservesDataTemp = await UiPoolDataProvider_contract.getReservesData(lendingPoolAddressProvider)
-    const reserve = getReservesDataTemp[0]
-    const base = getReservesDataTemp[1]
-    console.log('reserve', getReservesDataTemp)
-
-    const { reservesData, baseCurrencyData } = getReservesHumanized(reserve, base, chainId, lendingPoolAddressProvider);
-
-    const currentTimestamp = dayjs().unix();
-    let formattedPoolReserves = formatReserves({
-        reserves: reservesData,
-        currentTimestamp: currentTimestamp,
-        marketReferenceCurrencyDecimals:
-            baseCurrencyData.marketReferenceCurrencyDecimals,
-        marketReferencePriceInUsd: baseCurrencyData.marketReferenceCurrencyPriceInUsd,
-    });
-
-    console.log("formattedPoolReserves:", formattedPoolReserves)
-    return ({ reserveData: formattedPoolReserves })
+    return
 })
 
 export const loadUserSummary = createAsyncThunk("account/loadUserSummary", async (props) => {
     const { pro, addr } = props
+
+    let reserve_data = null
+    let UiPoolDataProvider_contract = null
+    let chainId = null
+    let lendingPool_contract = null
     let chainIdTemp = await pro.getNetwork()
+    console.log("chainIdTemp: ", chainIdTemp)
     chainId = chainIdTemp.chainId
+
+    const chainName = ChainIdsToNetwork(chainId)
+
+    const lendingPoolAddressProvider = deployed_contracts_address.LendingPoolAddressesProvider[chainName].address
+    const lendingPool_address = deployed_contracts_address.LendingPool[chainName].address
+    const uipoolDataProvider_address = deployed_contracts_address.UiPoolDataProvider[chainName].address
+    const walletBalanceProviderAddress = deployed_contracts_address.WalletBalanceProvider[chainName].address
 
     lendingPool_contract = new ethers.Contract(
         lendingPool_address,
@@ -307,7 +287,6 @@ export const reserveSlice = createSlice({
                 state.loading = true;
             })
             .addCase(loadReserveSummary.fulfilled, (state, action) => {
-                state.reserveData = action.payload.reserveData;
                 state.loading = false;
             })
             .addCase(loadReserveSummary.rejected, (state, { error }) => {

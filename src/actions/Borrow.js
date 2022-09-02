@@ -2,11 +2,18 @@ import { LendingPool, InterestRate } from '@aave/contract-helpers';
 import deployed_contracts_address from "../deployed-contracts.json"
 import { submitTransaction } from "./SubmitTransaction";
 
+import { ChainIdsToNetwork } from '../helpers/ChainIds'
+
 export const onBorrow = async (provider, amount, reserve, user, interestRateMode) => {
 
     const realProvider = provider.provider
-    const lendingPoolAddress = deployed_contracts_address.LendingPool.mumbai.address
-    const wethGatewayAddress = deployed_contracts_address.WETHGateway.mumbai.address
+    let chainIdTemp = await realProvider.getNetwork()
+    console.log("chainIdTemp: ", chainIdTemp)
+    let chainId = chainIdTemp.chainId
+
+    const chainName = ChainIdsToNetwork(chainId)
+    const lendingPoolAddress = deployed_contracts_address.LendingPool[chainName].address
+    const wethGatewayAddress = deployed_contracts_address.WETHGateway[chainName].address
     const realAmount = amount.amount
 
     const lendingPool = new LendingPool(realProvider, {

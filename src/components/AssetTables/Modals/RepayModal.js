@@ -45,6 +45,7 @@ export default function RepayModal(props) {
     const [maxSelected, setMaxSelected] = useState('');
     const [repayMax, setRepayMax] = useState('');
     const [afterHealthFactor, setAfterHealthFactor] = useState()
+    const [newCredit, setNewCredit] = useState()
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.account.address)
@@ -159,6 +160,8 @@ export default function RepayModal(props) {
         };
 
         if (amountt) {
+            let newCred = amountt.amount * priceInUSD * 0.001 //can be optimised by assigning a variable
+            setNewCredit(newCred)
 
             let newHealthFactor = GetNewHealthFactorRepay(
                 amountt,
@@ -207,6 +210,9 @@ export default function RepayModal(props) {
         if (parseFloat(e.target.value) < parseFloat(maxAmount)) {
 
             if (e.target.value) {
+
+                let newCred = amountt.amount * priceInUSD * 0.001 //can be optimised by assigning a variable
+                setNewCredit(newCred)
 
                 let newHealthFactor = GetNewHealthFactorRepay(
                     amountt,
@@ -332,6 +338,7 @@ export default function RepayModal(props) {
                                             {parseFloat(debt).toFixed(2)} {asset} → {parseFloat(debt ? debt - (amount ? amount.amount : 0) : 0) < 0 ? parseFloat(debt ? debt - (amount ? amount.amount : 0) + ((debt) * ('0.0025')) : 0).toFixed(2) : parseFloat(debt ? debt - (amount ? amount.amount : 0) : 0).toFixed(2)} {asset}
                                         </Col>
                                     </Row>
+
                                     <Row className='padding'>
                                         <Col className='col-left'>
                                             Health Factor
@@ -343,14 +350,14 @@ export default function RepayModal(props) {
 
                                         </Col>
                                     </Row>
-                                    {/* <Row className='padding'>
+                                    <Row className='padding'>
                                         <Col className='col-left'>
                                             New Credit
                                         </Col>
                                         <Col className='col-right'>
-                                            $ 12.98
+                                            {amount ? "$" + DigitsFormat(newCredit) : "$0"}
                                         </Col>
-                                    </Row> */}
+                                    </Row>
                                 </Card>
                             </div>
 

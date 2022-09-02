@@ -3,10 +3,17 @@ import deployed_contracts_address from "../deployed-contracts.json"
 import { submitTransaction } from "./SubmitTransaction";
 import { BigNumber } from 'ethers';
 
+import { ChainIdsToNetwork } from '../helpers/ChainIds'
+
 export const onApprove = async (provider, reserve, user) => {
 
     const realProvider = provider.provider
-    const lendingPoolAddress = deployed_contracts_address.LendingPool.mumbai.address
+    let chainIdTemp = await realProvider.getNetwork()
+    console.log("chainIdTemp: ", chainIdTemp)
+    let chainId = chainIdTemp.chainId
+
+    const chainName = ChainIdsToNetwork(chainId)
+    const lendingPoolAddress = deployed_contracts_address.LendingPool[chainName].address
     const MaxUint256 = BigNumber.from("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
     const DEFAULT_APPROVE_AMOUNT = MaxUint256.toString();
 

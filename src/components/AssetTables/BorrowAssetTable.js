@@ -93,7 +93,7 @@ export default function BorrowAssetTable(props) {
 
             let availableBorrowsUSD = parseFloat(getMaxAmountAvailableToBorrow(poolReserve, userInfo, "Variable"))
             availableBorrowsUSD = DigitsFormat(availableBorrowsUSD)
-            console.log("availableBorrowsUSD:", availableBorrowsUSD)
+            // console.log("availableBorrowsUSD:", availableBorrowsUSD)
 
             if (stableBorrowAPY < 0.01) {
                 stableBorrowAPY = "< 0.01"

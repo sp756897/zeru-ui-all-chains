@@ -24,7 +24,7 @@ export const GetNewHealthFactorSupply = (
         const totalCollateralMarketReferenceCurrencyAfter = user
             ? valueToBigNumber(totalCollateralMarketReferenceCurrency).plus(amountIntEth).plus(totalCreditInEthBig)
             : '-1';
-        console.log("totalCollateralMarketReferenceCurrencyAfter: ", totalCollateralMarketReferenceCurrencyAfter.toString())
+        // console.log("totalCollateralMarketReferenceCurrencyAfter: ", totalCollateralMarketReferenceCurrencyAfter.toString())
 
         const totalCollateralMarketReferenceCurrencyTemp = valueToBigNumber(totalCollateralMarketReferenceCurrency).plus(totalCreditInEthBig)
         const liquidationThresholdAfter = user
@@ -33,7 +33,7 @@ export const GetNewHealthFactorSupply = (
                 .plus(amountIntEth.multipliedBy(formattedReserveLiquidationThreshold))
                 .dividedBy(totalCollateralMarketReferenceCurrencyAfter)
             : '-1';
-        console.log("liquidationThresholdAfter: ", liquidationThresholdAfter.toString())
+        // console.log("liquidationThresholdAfter: ", liquidationThresholdAfter.toString())
 
         let newHealthFactor = calculateHealthFactorFromBalancesBigUnits({
             collateralBalanceMarketReferenceCurrency: totalCollateralMarketReferenceCurrencyAfter,
@@ -41,7 +41,7 @@ export const GetNewHealthFactorSupply = (
             currentLiquidationThreshold: liquidationThresholdAfter
         })
 
-        console.log("newHealthFactor: ", newHealthFactor.toString())
+        // console.log("newHealthFactor: ", newHealthFactor.toString())
 
         return newHealthFactor
     }

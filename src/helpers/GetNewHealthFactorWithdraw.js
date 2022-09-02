@@ -46,8 +46,8 @@ export const GetNewHealthFactorWithdraw = (
             borrowBalanceMarketReferenceCurrency: valueToBigNumber(totalBorrowsMarketReferenceCurrency),
             currentLiquidationThreshold: liquidationThresholdAfterWithdraw,
         });
-        console.log(totalCollateralInETHAfterWithdraw.toString(), totalBorrowsMarketReferenceCurrency, liquidationThresholdAfterWithdraw.toString())
-        console.log("healthFactorAfterWithdrawTemp: ", healthFactorAfterWithdrawTemp.toString())
+        // console.log(totalCollateralInETHAfterWithdraw.toString(), totalBorrowsMarketReferenceCurrency, liquidationThresholdAfterWithdraw.toString())
+        // console.log("healthFactorAfterWithdrawTemp: ", healthFactorAfterWithdrawTemp.toString())
         return (healthFactorAfterWithdrawTemp.toString())
     }
 }

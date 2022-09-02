@@ -33,7 +33,7 @@ export const GetNewHealthFactorRepay = (
         currentLiquidationThreshold: valueToBigNumber(currentLiquidationThreshold)
     })
 
-    console.log("newHF: ", newHF.toString())
+    // console.log("newHF: ", newHF.toString())
     return newHF.toString()
 
 }

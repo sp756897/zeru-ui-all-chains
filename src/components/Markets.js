@@ -1,24 +1,21 @@
 import { Col, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { Progress } from 'antd';
+import { useSelector } from 'react-redux'
+import { IoInfiniteSharp } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
+
 import BorrowAssetTable from './AssetTables/BorrowAssetTable'
 import BorrowedAssetTable from './AssetTables/BorrowedAssetTable'
 import SuppliedAssetTable from './AssetTables/SuppliedAssetTable'
 import SupplyAssetTable from './AssetTables/SupplyAssetTable'
-import { Progress } from 'antd';
-import { useSelector } from 'react-redux'
 import CurrencyFormater from "../helpers/CurrencyFormater"
 import { CalculateNetAPY } from './CalculateNetAPY'
-import { IoInfiniteSharp } from 'react-icons/io5'
-
-import deployed_contracts_address from "../deployed-contracts.json"
-import { Link } from 'react-router-dom'
 
 const suppliedtable = { c1: 'Assets', c2: 'Balance', c3: 'APY', c4: 'Collateral' }
 const supplytable = { c1: 'Assets', c2: 'Wallet Balance', c3: 'APY', c4: 'Can be collateral' }
 const borrowedtable = { c1: 'Assets', c2: 'Debt', c3: 'APY', c4: 'APY type' }
 const borrowtable = { c1: 'Assets', c2: 'Available', c3: 'APY,Variable', c4: 'APY,Stable' }
-
-const lendingPoolAddress = deployed_contracts_address.LendingPool.mumbai.address
 
 export default function Markets(provider) {
 
@@ -58,7 +55,7 @@ export default function Markets(provider) {
         let Borrowed = (totalBorrowable - parseFloat(totalDebtETHinUSD))
         let percentTemp = ((Borrowed / totalBorrowable)) * 100
         percentTemp = parseFloat(100 - percentTemp)
-        console.log("percent: ", percentTemp, "totalSupplyUSD: ", totalBorrowable, "leftToBorrowUSD:", Borrowed, "totalDebtETH", totalDebtETHinUSD, "currentLoanToValue:", currentLoanToValue)
+        // console.log("percent: ", percentTemp, "totalSupplyUSD: ", totalBorrowable, "leftToBorrowUSD:", Borrowed, "totalDebtETH", totalDebtETHinUSD, "currentLoanToValue:", currentLoanToValue)
         setPercent(percentTemp);
     }
 

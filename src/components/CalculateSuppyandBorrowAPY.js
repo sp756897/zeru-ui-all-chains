@@ -66,6 +66,6 @@ export const CalculateSuppyandBorrowAPY = () => {
             (debtAPY || 0) *
             ((userSummary.totalBorrowsUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1'));
         console.log("APY:", supplyAPY * 100, borrowAPY * 100)
-        return { suppyAPY: supplyAPY ? (supplyAPY * 100).toFixed(2).toString() : 0, borrowAPY: borrowAPY ? (borrowAPY * 100).toFixed(2).toString() : 0 }
+        return { suppyAPY: supplyAPY ? supplyAPY.toFixed(2) : 0, borrowAPY: borrowAPY ? borrowAPY.toFixed(2) : 0 }
     }
 }

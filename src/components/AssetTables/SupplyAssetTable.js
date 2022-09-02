@@ -5,8 +5,9 @@ import SupplyModal from './Modals/SupplyModal';
 import { useSelector } from 'react-redux';
 import { ethers } from "ethers"
 import { DigitsFormat } from '../../helpers/DigitsFormat';
-import {BsBoxArrowUpRight} from 'react-icons/bs'
+import { BsBoxArrowUpRight } from 'react-icons/bs'
 
+import { ChainIdsToNetwork } from '../../helpers/ChainIds';
 
 export default function SupplyAssetTable(props) {
 
@@ -14,9 +15,9 @@ export default function SupplyAssetTable(props) {
     const userSummary = useSelector((state) => state.reserve.userSummary);
     const userAccountDatawithCreditData = useSelector((state) => state.reserve.userAccountDatawithCreditData)
     const titles = props.titles;
-    console.log('titles:',titles)
+    // console.log('titles:',titles)
     const provider = props.provider;
-    console.log('provider:',provider)
+    // console.log('provider:',provider)
 
     const columns = [
         {
@@ -70,12 +71,20 @@ export default function SupplyAssetTable(props) {
     ];
 
     const defaultTitle = () => {
+        console.log("provider: ", provider)
+        // const realProvider = provider.provider
+        // let chainIdTemp = await realProvider.getNetwork()
+        // console.log("chainIdTemp: ", chainIdTemp)
+        // let chainId = chainIdTemp.chainId
+        // const chainName = ChainIdsToNetwork(chainId)
+
         return (
             <div>
                 <h2>Supply Assets</h2>
-                <div style={{display:'flex',alignItems:'center',justifyContent:'flex-end'}}>
-                    <Link to="/faucet" state={{ titles: titles, provider: provider }} >Faucet <BsBoxArrowUpRight size={12} /></Link>
-                </div>
+                {/* {chainName != "coverage" ?
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                        <Link to="/faucet" state={{ titles: titles, provider: provider }} >Faucet <BsBoxArrowUpRight size={12} /></Link>
+                    </div> : ""} */}
             </div>
         )
     }

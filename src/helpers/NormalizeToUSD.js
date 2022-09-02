@@ -9,7 +9,7 @@ export function normalizedToUsd(
     valueTemp = ethers.utils.formatEther(valueTemp)
     let marketReferencePriceInUsdTemp = (marketReferencePriceInUsd).toString()
     marketReferencePriceInUsdTemp = ethers.utils.formatUnits(marketReferencePriceInUsdTemp, 8)
-    console.log("value:", valueTemp, "marketReferencePriceInUsd:", marketReferencePriceInUsdTemp)
+    // console.log("value:", valueTemp, "marketReferencePriceInUsd:", marketReferencePriceInUsdTemp)
 
     let temp = valueTemp * marketReferencePriceInUsdTemp
     temp = temp.toString()

@@ -57,14 +57,26 @@ export const CalculateNetAPY = () => {
       }
     ) : ""
 
-    const earnedAPY = (proportions.positiveProportion / ((userSummary.totalLiquidityUSD)))
-    const debtAPY = (proportions.negativeProportion / ((userSummary.totalBorrowsUSD)))
+    let earnedAPY = (proportions.positiveProportion / ((userSummary.totalLiquidityUSD)))
+    let debtAPY = (proportions.negativeProportion / ((userSummary.totalBorrowsUSD)))
+    //earnedAPY = earnedAPY ? "" : 0.00
+    //debtAPY = debtAPY ? "" : 0.00
+
+    // console.log("earnedAPY: ", earnedAPY, "debtAPY: ", debtAPY, "totalLiquidityUSD: ", userSummary.totalLiquidityUSD, "netWorthUSD: ", userSummary.netWorthUSD, "totalBorrowsUSD: ", userSummary.totalBorrowsUSD)
+    // console.log("earnedAPYCalc: ", (earnedAPY || 0) *
+    //   ((userSummary.totalLiquidityUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1'))
+    //   , "debtAPY", (debtAPY || 0) *
+    // ((userSummary.totalBorrowsUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1')))
+
+
+    // console.log("earnedAPY2: ", earnedAPY)
     const netAPY =
-      (earnedAPY || 0) *
-      ((userSummary.totalLiquidityUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1')) -
-      (debtAPY || 0) *
-      ((userSummary.totalBorrowsUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1'));
-    console.log("netapy:", netAPY)
+      Math.abs((earnedAPY || 0) *
+        ((userSummary.totalLiquidityUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1')))
+      -
+      Math.abs((debtAPY || 0) *
+        ((userSummary.totalBorrowsUSD) / (userSummary.netWorthUSD !== '0' ? userSummary.netWorthUSD : '1')));
+    // console.log("netapy:", netAPY)
     return netAPY.toFixed(2)
   }
 }
