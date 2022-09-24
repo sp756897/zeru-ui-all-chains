@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import CurrencyFormater from "../helpers/CurrencyFormater"
 import ScrollToTopOnMount from './ScrollToTopOnMount'
 
+import { DigitsFormat } from '../helpers/DigitsFormat'
+
 export default function AssetDetails() {
   const location = useLocation()
   const { record } = location.state
@@ -14,7 +16,7 @@ export default function AssetDetails() {
   const asset = record.asset
   const totalLiquidityUSD = CurrencyFormater(record.totalLiquidityUSD, 2)
   const availableLiquidityUSD = CurrencyFormater(record.availableLiquidityUSD, 2)
-  const priceInUSD = CurrencyFormater(record.priceInUSD, 2)
+  const priceInUSD = DigitsFormat(record.priceInUSD)
   const formattedBaseLTVasCollateral = (record.formattedBaseLTVasCollateral * 100).toFixed(2)
   const formattedReserveLiquidationThreshold = (record.formattedReserveLiquidationThreshold * 100).toFixed(2)
   const formattedReserveLiquidationBonus = (record.formattedReserveLiquidationBonus * 100).toFixed(2)
@@ -27,9 +29,16 @@ export default function AssetDetails() {
   const stableBorrowAPY = stableBorrowAPYTemp > 0.01 ? stableBorrowAPYTemp.toFixed(2) : "< 0.01"
   const usageAsCollateralEnabled = record.usageAsCollateralEnabled ? "Yes" : "No"
 
+  function isCollateralEligibal(props) {
+    if (props == 'No') {
+      return <p className='color-red font-size-1rem-bolder'>{props}</p>;
+    }
+    return <p className='color-green font-size-1rem-bolder'>{props}</p>;
+  }
+
   return (
     <div className='assetdetails'>
-      <ScrollToTopOnMount/>
+      <ScrollToTopOnMount />
       <Row className='overallview' >
         <Button type='primary' style={{ alignItems: "start" }}><Link to="/" >Go Back</Link></Button>
         <Col span={4}>
@@ -88,7 +97,8 @@ export default function AssetDetails() {
               <Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', width: '100%', textAlign: 'left' }}>
                 <div><p className='font-size-1_5rem-bolder'>Collateral usage</p></div>
                 <div><p className='color-cement font-size-1rem-bolder'>can be collateral?</p>
-                  <p className='color-green font-size-1rem-bolder'>{usageAsCollateralEnabled}</p>
+                  {isCollateralEligibal(usageAsCollateralEnabled)}
+                  {/* <p className='color-green font-size-1rem-bolder'>{usageAsCollateralEnabled}</p> */}
                 </div>
                 <div></div>
               </Row>

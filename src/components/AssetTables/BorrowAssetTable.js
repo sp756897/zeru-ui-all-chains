@@ -59,7 +59,7 @@ export default function BorrowAssetTable(props) {
             render: (_, record) => (
                 <Space size="middle">
                     <BorrowModal btn="primary" record={record} provider={props.provider} />
-                    <Button><Link to="/details" state={{ asset: "ETH" }}>details</Link></Button>
+                    <Button><Link to="/details" state={{ asset: 'ETH', record: record }}>details</Link></Button>
                 </Space>
             ),
             align: 'center'

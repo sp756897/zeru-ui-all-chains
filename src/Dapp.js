@@ -308,11 +308,11 @@ export default function Dapp() {
                                             Credit
                                         </NavLink>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <NavLink className="navlink" to={`/dashboard`}>
                                             Dashboard
                                         </NavLink>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <NavLink className="navlink" to="/staking">
                                             Staking
@@ -361,7 +361,7 @@ export default function Dapp() {
                         <Route path="/details" element={<AssetDetails />} />
                         <Route path="/staking" element={<Staking />} />
                         <Route path="/credit" element={<Credit provider={injectedProvider} />} />
-                        <Route path="/faucet" element={<Faucet/>} />
+                        <Route path="/faucet" element={<Faucet />} />
                         <Route path={`/dashboard`} element={<Dashboard network={currentNetwork} />} />
                     </Routes>
                     <Footer style={{ background: '#070a0e', color: 'white', marginTop: 'auto' }}>
