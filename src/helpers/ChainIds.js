@@ -8,7 +8,8 @@ export const ChainIdsToNetwork = (number) => {
     100: "xdai",
     43114: "avalanche",
     43113: "fuji",
-    1337: "coverage"
+    1337: "coverage",
+    97: "testbsc"
   }
   return chainids[number]
 }

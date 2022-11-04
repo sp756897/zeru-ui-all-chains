@@ -49,7 +49,44 @@
           "type": "bool"
         }
       ],
-      "name": "LiquidationCall",
+      "name": "CollateralLiquidationCall",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "principal",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "debtToCover",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "liquidator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "receiveAToken",
+          "type": "bool"
+        }
+      ],
+      "name": "CreditLiquidationCall",
       "type": "event"
     },
     {
@@ -111,6 +148,11 @@
           "internalType": "uint256",
           "name": "debtToCover",
           "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "receiveCreditToken",
+          "type": "bool"
         },
         {
           "internalType": "bool",

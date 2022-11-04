@@ -141,6 +141,7 @@ export const loadUserSummary = createAsyncThunk("account/loadUserSummary", async
     chainId = chainIdTemp.chainId
 
     const chainName = ChainIdsToNetwork(chainId)
+    console.log("chainName: ", chainName)
 
     const lendingPoolAddressProvider = deployed_contracts_address.LendingPoolAddressesProvider[chainName].address
     const lendingPool_address = deployed_contracts_address.LendingPool[chainName].address
@@ -160,6 +161,7 @@ export const loadUserSummary = createAsyncThunk("account/loadUserSummary", async
     )
 
     const getReservesDataTemp = await UiPoolDataProvider_contract.getReservesData(lendingPoolAddressProvider)
+    console.log(getReservesDataTemp)
     const reserve = getReservesDataTemp[0]
     const base = getReservesDataTemp[1]
 

@@ -71,7 +71,7 @@ export default function SupplyAssetTable(props) {
     ];
 
     const defaultTitle = () => {
-        console.log("provider: ", provider)
+        // console.log("provider: ", provider)
         // const realProvider = provider.provider
         // let chainIdTemp = await realProvider.getNetwork()
         // console.log("chainIdTemp: ", chainIdTemp)
@@ -81,10 +81,10 @@ export default function SupplyAssetTable(props) {
         return (
             <div>
                 <h2>Supply Assets</h2>
-                {/* {chainName != "coverage" ?
+                {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                         <Link to="/faucet" state={{ titles: titles, provider: provider }} >Faucet <BsBoxArrowUpRight size={12} /></Link>
-                    </div> : ""} */}
+                    </div>}
             </div>
         )
     }
